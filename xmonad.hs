@@ -176,7 +176,7 @@ myBorderWidth = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "super key" is usually mod4Mask.
 --
-myModMask = mod1Mask
+myModMask = mod5Mask
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
