@@ -31,7 +31,7 @@ import qualified XMonad.Layout.IndependentScreens as LIS
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
-import Data.String.Utils
+-- import Data.String.Utils
 
 
 ------------------------------------------------------------------------
@@ -39,10 +39,10 @@ import Data.String.Utils
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "gnome-terminal --hide-menubar"
+myTerminal = "terminator"
 
 scratchpads = [
-    NS "term" "gnome-terminal --hide-menubar --role=scratchpad" (role =? "scratchpad") (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
+    NS "term" "terminator --role=scratchpad" (role =? "scratchpad") (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
     NS "afs" "gnome-terminal -e 'bash' --hide-menubar --role=afs" (role =? "afs") (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
     NS "irc" "gnome-terminal --role=irc" (role =? "irc") (customFloating $ W.RationalRect (1/12) (1/12) (5/6) (5/6)),
     NS "applaunch" "xfce4-appfinder -c" (title =? "Application Finder") defaultFloating ,
@@ -176,7 +176,7 @@ myBorderWidth = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "super key" is usually mod4Mask.
 --
-myModMask = mod5Mask
+myModMask = mod1Mask
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
@@ -482,7 +482,7 @@ main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
-            ppOutput = hPutStrLn xmproc . replace " NSP " " "
+            ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
