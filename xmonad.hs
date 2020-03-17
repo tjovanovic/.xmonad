@@ -461,17 +461,8 @@ myStartupHook = do
   spawn "xscreensaver -no-splash &"
   spawn "feh --bg-scale $HOME/.wall.jpg&"
   spawn "xsetroot -cursor_name left_ptr"
---  spawn "killall nautilus"
---  spawn "rm ~/.config/google-chrome/SingletonLock"
   spawn "setxkbmap us -variant altgr-intl -option ctrl:nocaps"
-  spawn "(killall xcape; exit 0)"
-  spawn "xcape -e 'Control_L=Escape' -t 500"
   spawn "xss-lock -- xscreensaver-command -lock &"
-  spawn "$HOME/.startup_scripts/port_forward_grimes.sh"
-  spawn "$HOME/.startup_scripts/port_forward_arbtracker.sh"
-
-  {-spawn "killall stalonetray nm-applet pasystray; stalonetray --icon-size=16 --kludges=force_icons_size --geometry 2x1+3250 -bg \"#1E1E1E\"& nm-applet& pasystray&"-}
---  spawn "~/.dropbox-dist/dropboxd"
   setWMName "LG3D"
 
 
@@ -480,7 +471,7 @@ myStartupHook = do
 --
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ defaults {
+  xmonad $ docks $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100

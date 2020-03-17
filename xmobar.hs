@@ -24,6 +24,6 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "    %StdinReader% }  %date%  {  %memory%    %cpu%    %enp0s31f6%    %vol%    ",
+    template = "    %StdinReader% }  %date%  {  %memory%    %cpu%    %enp7s0%    %vol%    ",
     position = TopW C 100
 }
