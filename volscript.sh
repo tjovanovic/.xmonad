@@ -1,8 +1,8 @@
 #!/bin/bash
 
-LEVEL=$(amixer get Master | tail -n1 | awk -F"[][]" '{ print $2}' | sed -e 's/%//')
+LEVEL=`pamixer --get-volume`
 
-MUTED=$(amixer get Master | tail -n1 | awk -F"[][]" '{ print $4}' | sed -e 's/off/M/' -e 's/on//')
+MUTED=$(pamixer --get-mute | sed -e 's/true/M/' -e 's/false//')
 
 if [ "$MUTED" == "M" ]; then
     echo "Vol:<fc=#FF8500>"$LEVEL"</fc>%"$MUTED

@@ -250,15 +250,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Audio mute toggle
   , ((0, xK_F8 ),
-     spawn "amixer -q set Master toggle")
+     spawn "pamixer -t")
 
   -- Audio Vol+
   , ((modMask, xK_bracketright ),
-     spawn "amixer -q set Master 5%+")
+     spawn "pactl set-sink-volume 1 +5%")
     
   -- Audio Vol-
   , ((modMask, xK_bracketleft ),
-     spawn "amixer -q set Master 5%-")
+     spawn "pactl set-sink-volume 1 -5%")
 
   -- Audio mute toggle (media key)
   , ((0, 0x1008FF12),
@@ -462,7 +462,7 @@ myStartupHook = do
   spawn "feh --bg-scale $HOME/.wall.jpg&"
   spawn "xsetroot -cursor_name left_ptr"
   spawn "setxkbmap us -variant altgr-intl -option ctrl:nocaps"
-  spawn "xss-lock -- xscreensaver-command -lock &"
+--  spawn "xss-lock -- xscreensaver-command -lock &"
   setWMName "LG3D"
 
 
